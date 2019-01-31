@@ -104,7 +104,7 @@ public class Sockbanana {
                                 + "| \n"
                                 + "| \n"
                                 + "/ \\");
-                        System.out.println("yo mans is dead cuz and the word was " + word);
+                        System.out.println("The word was " + word);
                     }
                 }
         }
