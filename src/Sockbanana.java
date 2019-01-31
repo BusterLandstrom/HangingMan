@@ -6,22 +6,25 @@ import java.util.Scanner;
 
 public class Sockbanana {
     public static void main(String[] args) {
+        //Values
         int points = 0;
         String guess;
         int guessesLeft = 3;
         String guessedLetters = "";
-
         Scanner inputFile = null;
+        //Scanning the files
         try {
             inputFile = new Scanner(new File("input.txt"));
         } catch (FileNotFoundException e) {
             System.out.println("filen finns int, använd tangentborde iställe..");
             inputFile = new Scanner(System.in);
         }
+        //Creating the word list
         ArrayList<String> wordList = new ArrayList<>();
         while (inputFile.hasNextLine()) {
             wordList.add(inputFile.nextLine());
         }
+        //Word randomizer
         Random R = new Random();
         String word = wordList.get(R.nextInt(wordList.size()));
         String star = "*";
@@ -30,10 +33,12 @@ public class Sockbanana {
 
             myWord[i] += star.charAt(0);
         }
+        //Printing the Word
         for(int s = 0; s < 1; s++){
             System.out.print(myWord);
             System.out.println();
         }
+        //Guessing
         Scanner in = new Scanner(System.in);
         while (guessesLeft > 0) {
             char guessAsChar = in.nextLine().charAt(0);
@@ -48,13 +53,14 @@ public class Sockbanana {
                     points ++;
                 }
             }
+            //Win
             System.out.print(myWord);
             System.out.println();
             if(points == word.length()){
                 System.out.println("Congrats my dude!");
                 break;
             }
-
+            //Is word true?
             boolean found = false;
             guessedLetters += guessAsChar;
             char[] wordAsChar = word.toCharArray();
@@ -64,6 +70,8 @@ public class Sockbanana {
                         found = true;
                     }
                 }
+
+                //Hanging the man
             if(!found){
                 guessesLeft--;
                 System.out.println("Du har " + guessesLeft + " kvar!");
